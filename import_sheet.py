@@ -13,7 +13,7 @@ def import_sheet(f, import_to=0, sheet_name='', import_from='', header_row=0):
     :param f:               str, required; filename with file extension (import.csv or import.xlsx)
     :param sheet_name:      str, optional; what Smartsheet will call the sheet name
     :param import_from:     str, optional; the file path you're importing the file from (ex: C:\foo\bar\ )
-    :param import_to:       int, optional; folderID
+    :param import_to:       int, optional; folder id
     :param header_row:      int, optional; which row the header is on
     :return:                none
     """
