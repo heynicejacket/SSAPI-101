@@ -6,15 +6,14 @@ file_name = ''                                          # name of file to import
 _dir = os.path.dirname(os.path.abspath(__file__))       # path this code is in
 
 
-def import_sheet(f, upload_to=0, sheet_name='', upload_from='', header_row=0):
+def import_sheet(f, import_to=0, sheet_name='', import_from='', header_row=0):
     """
-    A slightly more elegant way to import a file into smartsheet, regardless of filetype
+    A slightly more elegant way to import a file into Smartsheet, regardless of filetype
     TODO: include TSV/txt as an option
-    TODO: pull folder name to return to user over folder id
     :param f:               str, required; filename with file extension (import.csv or import.xlsx)
     :param sheet_name:      str, optional; what Smartsheet will call the sheet name
-    :param upload_from:     str, optional; the file path you're uploading the file from (ex: C:\foo\bar\ )
-    :param upload_to:       int, optional; folderID
+    :param import_from:     str, optional; the file path you're importing the file from (ex: C:\foo\bar\ )
+    :param import_to:       int, optional; folderID
     :param header_row:      int, optional; which row the header is on
     :return:                none
     """
@@ -25,37 +24,34 @@ def import_sheet(f, upload_to=0, sheet_name='', upload_from='', header_row=0):
     if sheet_name == '':                                # if no sheet name, use the filename (ss removes the file ext)
         sheet_name = file_name
 
-    if upload_from == '':                               # if no upload location specified, use the filepath of this code
+    if import_from == '':                               # if no import location specified, use the filepath of this code
         file_location = _dir
     else:
-        file_location = upload_from
+        file_location = import_from
 
     ext = get_file_ext(f)                               # calls the filetype function to get the file extension
     file_path = file_location + '\\' + f                # concatenate the filepath and file name
 
-    # calls import_csv_sheet if csv, with or without upload folderID
-    if ext == 'csv':
-        if upload_to == 0:
+    if ext == 'csv':                                    # import_csv_sheet if csv, with or without import folderID
+        if import_to == 0:
             ss.Sheets.import_csv_sheet(file_path, sheet_name, header_row)
         else:
-            ss.Folders.import_csv_sheet(upload_to, file_path, sheet_name, header_row)
+            ss.Folders.import_csv_sheet(import_to, file_path, sheet_name, header_row)
 
-    # calls import_xlsx_sheet if xlsx, with or without upload folderID
-    if ext == 'xlsx':
-        if upload_to == 0:
+    if ext == 'xlsx':                                   # import_xlsx_sheet if xlsx, with or without import folderID
+        if import_to == 0:
             ss.Sheets.import_xlsx_sheet(file_path, sheet_name, header_row)
         else:
-            ss.Folders.import_xlsx_sheet(upload_to, file_path, sheet_name, header_row)
+            ss.Folders.import_xlsx_sheet(import_to, file_path, sheet_name, header_row)
 
-    # if neither csv or xlsx, fail
-    if ext == 'csv' or ext == 'xlsx':
-        if upload_to == 0:
-            upload_location = 'default/main location'
-        else:
-            upload_location = upload_to
-        print('Uploading {} \n from {} \n to {}.'.format(f, file_path, upload_location))
+    if ext == 'csv' or ext == 'xlsx':                   # report to user success or failure
+        if import_to == 0:                              # if no location provided, return default string
+            import_location = 'default/main location'
+        else:                                           # return name value from folderID with .name
+            import_location = ss.Folders.get_folder(import_to).name
+        print('Importing {} \n from {} \n to {}.'.format(f, file_path, import_location))
     else:
-        print('File type .' + ext + ' is invalid. Nothing uploaded.')
+        print('File type .' + ext + ' is invalid. Nothing imported.')
 
 
 def get_file_ext(f):
