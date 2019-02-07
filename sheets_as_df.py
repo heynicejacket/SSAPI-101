@@ -6,12 +6,12 @@ def sheet_as_df(access_token, sheet_id):
     """
     Converts raw Smartsheet Sheet objects into a nice and tidy pandas DataFrame, just like mum used to make
     For more detail, see: https://dataideas.blog/2018/11/13/loading-json-it-looks-simple-part-4/
-    :param access_token:    str, required; smartsheet api token
+    :param access_token:    str, required; Smartsheet api token
     :param sheet_id:        int, required; sheet ID
-    :return:                pandas dataframe of a Smartsheet sheet's contents
+    :return:                pandas DataFrame of a Smartsheet sheet's contents
     """
 
-    api_prefix_url = 'https://api.smartsheet.com/2.0/sheets/'       # base smartsheet api url for Requests
+    api_prefix_url = 'https://api.smartsheet.com/2.0/sheets/'       # base Smartsheet api url for Requests
     url = api_prefix_url + str(sheet_id)                            # full url for requests
     header = {                                                      # header for requests
         'Authorization': 'Bearer ' + access_token,
@@ -26,7 +26,7 @@ def sheet_as_df(access_token, sheet_id):
     for c in sheet_dic['columns']:                                  # for all columns in the sheet dictionary
         col_list.append(c['title'])                                 # add title value to col_list
 
-    df = pd.DataFrame(columns=col_list)                             # create an empty dataframe with the col_list
+    df = pd.DataFrame(columns=col_list)                             # create an empty DataFrame with the col_list
 
     for r in sheet_dic['rows']:                                     # iterate through all cells, place in rows and cols
         values = []                                                 # initialize values list for each row
