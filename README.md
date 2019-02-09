@@ -4,4 +4,4 @@ I haven't seen a lot of bite-sized examples (or examples of any size) for intera
 
 While I'm not quite the former, I have a bit of the latter.
 
-This will hopefully be a growing repository of simple examples of how to I/O your Smartsheet assets, manipulate the data therein, and push it to other services.
+This is intended as a single stop shop, growing repository of simple examples of how to I/O your Smartsheet assets, manipulate the data therein, and push it to other services.
