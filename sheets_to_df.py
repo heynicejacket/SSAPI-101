@@ -2,7 +2,7 @@ import requests
 import pandas as pd
 
 
-def sheet_as_df(access_token, sheet_id):
+def sheet_to_df(access_token, sheet_id):
     """
     Converts raw Smartsheet Sheet objects into a nice and tidy pandas DataFrame, just like mum used to make
     For more detail, see: https://dataideas.blog/2018/11/13/loading-json-it-looks-simple-part-4/
