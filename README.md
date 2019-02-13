@@ -8,7 +8,7 @@ This is intended as a one stop shop, growing repository of simple examples of ho
 
 **Please note:** I'm an advocate of tool democratization. These examples are written far more long hand than necessary, and I've opted for spelling out the logic wherever possible (with accompanying comments). These are not examples of Pythonic best practices.
 
-Stretching the metaphor a bit, using these examples is a bit like a power saw without the safety guard. Below, I'll be providing some examples of how to run these, and encourage you to get to know how these examples and the Smartsheet API work, before you cut your fingers off and delete critical infrastructure.
+Stretching the metaphor a bit, using these examples is a bit like a power saw without the safety guard. Below, I'll be providing some examples of how to run these, and encourage you to get to know how these examples and the Smartsheet API work, before you cut your fingers off and delete some critical piece of your company's infrastructure.
 
 ### Getting started with the Smartsheet API
 
