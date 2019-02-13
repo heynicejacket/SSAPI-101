@@ -21,7 +21,7 @@ new_column_dict = {'title': col, 'primary': p_col, ... }
 new_column_dict = {'title': col_title, 'primary': i == 0, ... }
 ```
 
-...to make things as obvious as posslbe for a complete beginner.
+...to make what's going on as clear as posslbe for a complete beginner.
 
 ### Getting started with the Smartsheet API
 
