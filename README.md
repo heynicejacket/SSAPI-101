@@ -6,9 +6,22 @@ While I'm not quite the former, I have a bit of the latter.
 
 This is intended as a one stop shop, growing repository of simple examples of how to I/O your Smartsheet assets, manipulate the data therein, and push it to other services.
 
-**Please note:** I'm an advocate of tool democratization. These examples are written far more long hand than necessary, and I've opted for spelling out the logic wherever possible (with accompanying comments). These are not examples of Pythonic best practices.
+**Please note:** I'm an advocate of tool democratization. These examples are written far more long hand than necessary, and I've opted for spelling out the logic wherever possible (with accompanying comments). These are not examples of Pythonic best practices. For example, I've opted for:
 
-Stretching the metaphor a bit, using these examples is a bit like a power saw without the safety guard. Below, I'll be providing some examples of how to run these, and encourage you to get to know how these examples and the Smartsheet API work, before you cut your fingers off and delete some critical piece of your company's infrastructure.
+```
+p_col = False
+if i == 0:
+  p_col = True
+new_column_dict = {'title': col, 'primary': p_col, ... }
+```
+
+...rather than simply:
+
+```
+new_column_dict = {'title': col_title, 'primary': i == 0, ... }
+```
+
+...to make things as obvious as posslbe for a complete beginner.
 
 ### Getting started with the Smartsheet API
 
