@@ -51,10 +51,10 @@ def append_df(ss, df, sheet_id):
     """
     Smartsheet has rate limits (http://smartsheet-platform.github.io/api-docs/#rate-limiting), so it's best to hit it
     as little as possible; this builds a block of i rows, j columns wide, and appends it once, rather than i * j times.
-    :param ss:
-    :param df:
-    :param sheet_id:
-    :return:
+    :param ss:                      initialized smartsheet client instance
+    :param df:                      DataFrame, required; pandas DataFrame
+    :param sheet_id:                int, required; sheet ID
+    :return:                        none
     """
 
     list_of_rows = []                                                       # empty list to populate with Row objects
